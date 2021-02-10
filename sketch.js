@@ -55,6 +55,6 @@ function draw(){
 		}
 		
 		fill(circles[i].colour)
-		ellipse(circles[i].x, circles[i].y, circles[i].r + (Math.sin(sx*(i+100)*0.005)*50), circles[i].r + (Math.sin(sx*(i+100)*0.005)*50));
+		ellipse(circles[i].x, circles[i].y, circles[i].r , circles[i].r );
 	}
 }
