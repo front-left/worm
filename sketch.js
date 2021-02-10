@@ -18,45 +18,43 @@ function setup(){
 
 function draw(){
 	// background('#0f0f0f');
-	
-	b = 1-b;
-	fill(255*b);
-	noStroke();
-	var colour;
-	if (b){
-		colour = '#828282';
-	} else {
-		colour = '#1eff00';
-	}
-	fill(colour);
-	sx += 0.05;
-	sy += 0.05;
-	var dx = mouseX - curX;
-	var dy = mouseY - curY;
-	curX += (dx)/60 + sin(sx*1.2);
-	curY += (dy)/60 + sin(sy*0.7);
-	var d = Math.sqrt(Math.pow(dx,2), Math.pow(dy,2));
-	// ellipse(curX, curY, 80, 80);
-	if (!(d < 100 && alt)){
-		
+	if (alt == 4){
+		alt = 0;
+		b = 1-b;
+		fill(255*b);
+		noStroke();
+		var colour;
+		if (b){
+			colour = '#828282';
+		} else {
+			colour = '#1eff00';
+		}
+		fill(colour);
+		sx += 0.05;
+		sy += 0.05;
+		var dx = mouseX - curX;
+		var dy = mouseY - curY;
+		curX += (dx)/30 + sin(sx*1.2);
+		curY += (dy)/30 + sin(sy*0.7);
+		var d = Math.sqrt(Math.pow(dx,2), Math.pow(dy,2));
+		// ellipse(curX, curY, 80, 80);
 		circles.push({
-			x: curX,
-			y: curY,
-			r: 4,
-			colour: colour
+				x: curX,
+				y: curY,
+				r: 4,
+				colour: colour
 		});
-	} else {
-		alt = 1-alt;
 	}
+	alt++;
 	clear();
-	for (var i = 1; i < circles.length-1; i++){
+	for (var i = 0; i < circles.length; i++){
 		
 		// circles[i].r += 7;
 		if (circles[i].r < 100){
-			circles[i].r += 2;
+			circles[i].r += 3;
 		}
 		
 		fill(circles[i].colour)
-		ellipse(circles[i].x, circles[i].y, circles[i].r, circles[i].r);
+		ellipse(circles[i].x, circles[i].y, circles[i].r + (Math.sin(sx*(i+100)*0.005)*50), circles[i].r + (Math.sin(sx*(i+100)*0.005)*50));
 	}
 }
