@@ -1,6 +1,10 @@
 var width;
 var height;
 var b = 0;
+var curX = window.innerWidth/2;
+var curY = window.innerHeight/2;
+var sx = 0;
+var sy = Math.PI/2;
 
 function setup(){
 	
@@ -21,6 +25,9 @@ function draw(){
 	} else {
 		fill('#1eff00');
 	}
-	
-	ellipse(mouseX, mouseY, 80, 80);
+	sx += 0.05;
+	sy += 0.05;
+	curX += (mouseX - curX)/40 + sin(sx)*2;
+	curY += (mouseY - curY)/40 + sin(sy)*2;
+	ellipse(curX, curY, 80, 80);
 }
